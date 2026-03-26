@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Notas</title>
+</head>
+<body>
+    <h1>Cálculo de notas</h1>
+
+    <input placeholder="Nota 1" id="nota1"><br><br>
+    <input placeholder="Nota 2" id="nota2"><br><br>
+    <input placeholder="Nota 3" id="nota3"><br><br>
+
+    <button onclick="calculo()">Calcular Média</button>
+
+    <p id="media"></p>
+
+    <script>
+        function calculo() {
+            var n1 = document.getElementById('nota1').value;
+            var n2 = document.getElementById('nota2').value;
+            var n3 = document.getElementById('nota3').value;
+
+            var resultado = document.getElementById("media");
+
+            if (n1 === "" || n2 === "" || n3 === "") {
+                resultado.innerText = "Erro: Preencha todas as notas.";
+                return;
+            }
+
+            var nota1 = Number(n1);
+            var nota2 = Number(n2);
+            var nota3 = Number(n3);
+
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+                resultado.innerText = "Erro: Digite apenas valores numéricos.";
+                return;
+            }
+
+            if (nota1 < 0 || nota1 > 10 ||
+                nota2 < 0 || nota2 > 10 ||
+                nota3 < 0 || nota3 > 10) {
+                resultado.innerText = "Erro: As notas devem estar entre 0 e 10.";
+                return;
+            }
+
+            var media = (nota1 + nota2 + nota3) / 3;
+
+            if (media >= 7) {
+                resultado.innerText = "Aprovado";
+            } else if (media >= 5) {
+                resultado.innerText = "Recuperação";
+            } else {
+                resultado.innerText = "Reprovado";
+            }
+        }
+    </script>
+</body>
+</html>
